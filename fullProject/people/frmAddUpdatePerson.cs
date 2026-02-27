@@ -254,22 +254,24 @@ namespace fullProject.people
 
         private void TxtNational_Validating(object sender, CancelEventArgs e)
         {
-            if (string.IsNullOrEmpty(TxtNational.Text))
+            if (string.IsNullOrEmpty(TxtNational.Text.Trim()))
             {
                 e.Cancel = true;
                 errorProvider1.SetError(TxtNational, "This field is required!");
-                return;
+                return; 
             }
             else
             {
                 errorProvider1.SetError(TxtNational, null);
             }
-            if (TxtNational.Text.Trim()==_Person.NationalNo && clsPerson.isPersonExist(TxtNational.Text))
+
+            if (TxtNational.Text.Trim() != _Person.NationalNo && clsPerson.isPersonExist(TxtNational.Text.Trim()))
             {
                 e.Cancel = true;
-                errorProvider1.SetError(TxtNational, "This National No is Used for anthoer person!");
+                errorProvider1.SetError(TxtNational, "This National No is already used for another person!");
             }
-            else{
+            else
+            {
                 errorProvider1.SetError(TxtNational, null);
             }
         }
