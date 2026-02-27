@@ -251,6 +251,7 @@
             this.scheduleVisionTestToolStripMenuItem.Name = "scheduleVisionTestToolStripMenuItem";
             this.scheduleVisionTestToolStripMenuItem.Size = new System.Drawing.Size(247, 38);
             this.scheduleVisionTestToolStripMenuItem.Text = "Schedule Vision Test";
+            this.scheduleVisionTestToolStripMenuItem.Click += new System.EventHandler(this.scheduleVisionTestToolStripMenuItem_Click_1);
             // 
             // scheduleWrittenTestToolStripMenuItem
             // 
@@ -259,6 +260,7 @@
             this.scheduleWrittenTestToolStripMenuItem.Name = "scheduleWrittenTestToolStripMenuItem";
             this.scheduleWrittenTestToolStripMenuItem.Size = new System.Drawing.Size(247, 38);
             this.scheduleWrittenTestToolStripMenuItem.Text = "Schedule Written Test";
+            this.scheduleWrittenTestToolStripMenuItem.Click += new System.EventHandler(this.scheduleWrittenTestToolStripMenuItem_Click_1);
             // 
             // scheduleStreetTestToolStripMenuItem
             // 
@@ -266,6 +268,7 @@
             this.scheduleStreetTestToolStripMenuItem.Name = "scheduleStreetTestToolStripMenuItem";
             this.scheduleStreetTestToolStripMenuItem.Size = new System.Drawing.Size(247, 38);
             this.scheduleStreetTestToolStripMenuItem.Text = "Schedule Written Test";
+            this.scheduleStreetTestToolStripMenuItem.Click += new System.EventHandler(this.scheduleStreetTestToolStripMenuItem_Click_1);
             // 
             // toolStripMenuItem3
             // 

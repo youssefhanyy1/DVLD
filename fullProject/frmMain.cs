@@ -167,5 +167,11 @@ namespace fullProject
             Form frm = new frmListInternationalLicesnseApplications();
             frm.ShowDialog();
         }
+
+        private void releaseDetainedDrivingLicenseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmReleaseDetainedLicenseApplication frm = new frmReleaseDetainedLicenseApplication();
+            frm.ShowDialog();
+        }
     }
 }

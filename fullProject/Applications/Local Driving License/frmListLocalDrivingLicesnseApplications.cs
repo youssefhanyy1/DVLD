@@ -301,5 +301,23 @@ namespace fullProject.Applications.Local_Driving_License
 
             }
         }
+
+        private void scheduleVisionTestToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            _ScheduleTest(clsTestType.enTestType.VisionTest);
+
+        }
+
+        private void scheduleWrittenTestToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            _ScheduleTest(clsTestType.enTestType.WrittenTest);
+
+        }
+
+        private void scheduleStreetTestToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            _ScheduleTest(clsTestType.enTestType.StreetTest);
+
+        }
     }
 }

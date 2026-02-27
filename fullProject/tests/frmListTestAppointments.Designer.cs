@@ -33,14 +33,14 @@
             this.pbTestTypeImage = new System.Windows.Forms.PictureBox();
             this.lblTitle = new System.Windows.Forms.Label();
             this.dgvLicenseTestAppointments = new System.Windows.Forms.DataGridView();
+            this.cmsApplications = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.takeTestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label1 = new System.Windows.Forms.Label();
             this.btnAddNewAppointment = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
             this.lblRecordsCount = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.cmsApplications = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.takeTestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ctrlDrivingLicenseApplicationInfo1 = new fullProject.Applications.Local_Driving_License.Control.ctrlDrivingLicenseApplicationInfo();
             ((System.ComponentModel.ISupportInitialize)(this.pbTestTypeImage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLicenseTestAppointments)).BeginInit();
@@ -98,6 +98,33 @@
             this.dgvLicenseTestAppointments.TabIndex = 136;
             this.dgvLicenseTestAppointments.TabStop = false;
             // 
+            // cmsApplications
+            // 
+            this.cmsApplications.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.cmsApplications.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.editToolStripMenuItem,
+            this.takeTestToolStripMenuItem});
+            this.cmsApplications.Name = "cmsApplications";
+            this.cmsApplications.Size = new System.Drawing.Size(154, 80);
+            // 
+            // editToolStripMenuItem
+            // 
+            this.editToolStripMenuItem.Image = global::fullProject.Properties.Resources.edit_32;
+            this.editToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.editToolStripMenuItem.Name = "editToolStripMenuItem";
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(153, 38);
+            this.editToolStripMenuItem.Text = "Edit";
+            this.editToolStripMenuItem.Click += new System.EventHandler(this.editToolStripMenuItem_Click);
+            // 
+            // takeTestToolStripMenuItem
+            // 
+            this.takeTestToolStripMenuItem.Image = global::fullProject.Properties.Resources.Test_32;
+            this.takeTestToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.takeTestToolStripMenuItem.Name = "takeTestToolStripMenuItem";
+            this.takeTestToolStripMenuItem.Size = new System.Drawing.Size(153, 38);
+            this.takeTestToolStripMenuItem.Text = "Take Test";
+            this.takeTestToolStripMenuItem.Click += new System.EventHandler(this.takeTestToolStripMenuItem_Click);
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -117,6 +144,7 @@
             this.btnAddNewAppointment.Size = new System.Drawing.Size(49, 36);
             this.btnAddNewAppointment.TabIndex = 138;
             this.btnAddNewAppointment.UseVisualStyleBackColor = true;
+            this.btnAddNewAppointment.Click += new System.EventHandler(this.btnAddNewAppointment_Click_1);
             // 
             // btnClose
             // 
@@ -154,33 +182,6 @@
             this.label2.TabIndex = 140;
             this.label2.Text = "# Records:";
             // 
-            // cmsApplications
-            // 
-            this.cmsApplications.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.cmsApplications.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.editToolStripMenuItem,
-            this.takeTestToolStripMenuItem});
-            this.cmsApplications.Name = "cmsApplications";
-            this.cmsApplications.Size = new System.Drawing.Size(227, 108);
-            // 
-            // editToolStripMenuItem
-            // 
-            this.editToolStripMenuItem.Image = global::fullProject.Properties.Resources.edit_32;
-            this.editToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.editToolStripMenuItem.Name = "editToolStripMenuItem";
-            this.editToolStripMenuItem.Size = new System.Drawing.Size(226, 38);
-            this.editToolStripMenuItem.Text = "Edit";
-            this.editToolStripMenuItem.Click += new System.EventHandler(this.editToolStripMenuItem_Click);
-            // 
-            // takeTestToolStripMenuItem
-            // 
-            this.takeTestToolStripMenuItem.Image = global::fullProject.Properties.Resources.Test_32;
-            this.takeTestToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.takeTestToolStripMenuItem.Name = "takeTestToolStripMenuItem";
-            this.takeTestToolStripMenuItem.Size = new System.Drawing.Size(226, 38);
-            this.takeTestToolStripMenuItem.Text = "Take Test";
-            this.takeTestToolStripMenuItem.Click += new System.EventHandler(this.takeTestToolStripMenuItem_Click);
-            // 
             // ctrlDrivingLicenseApplicationInfo1
             // 
             this.ctrlDrivingLicenseApplicationInfo1.Location = new System.Drawing.Point(8, 170);
@@ -203,6 +204,7 @@
             this.Controls.Add(this.lblTitle);
             this.Controls.Add(this.pbTestTypeImage);
             this.Name = "frmListTestAppointments";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmListTestAppointments";
             this.Load += new System.EventHandler(this.frmListTestAppointments_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pbTestTypeImage)).EndInit();
