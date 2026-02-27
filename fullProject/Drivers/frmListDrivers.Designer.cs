@@ -147,7 +147,7 @@
             this.toolStripSeparator1,
             this.showPersonLicenseHistoryToolStripMenuItem});
             this.cmsDrivers.Name = "contextMenuStrip1";
-            this.cmsDrivers.Size = new System.Drawing.Size(281, 130);
+            this.cmsDrivers.Size = new System.Drawing.Size(281, 158);
             // 
             // showDetailsToolStripMenuItem
             // 
@@ -156,6 +156,7 @@
             this.showDetailsToolStripMenuItem.Name = "showDetailsToolStripMenuItem";
             this.showDetailsToolStripMenuItem.Size = new System.Drawing.Size(280, 38);
             this.showDetailsToolStripMenuItem.Text = "&Show Person Info";
+            this.showDetailsToolStripMenuItem.Click += new System.EventHandler(this.showDetailsToolStripMenuItem_Click_1);
             // 
             // toolStripSeparator2
             // 
@@ -169,6 +170,7 @@
             this.issueInternationalLicenseToolStripMenuItem.Name = "issueInternationalLicenseToolStripMenuItem";
             this.issueInternationalLicenseToolStripMenuItem.Size = new System.Drawing.Size(280, 38);
             this.issueInternationalLicenseToolStripMenuItem.Text = "Issue International License";
+            this.issueInternationalLicenseToolStripMenuItem.Click += new System.EventHandler(this.issueInternationalLicenseToolStripMenuItem_Click_1);
             // 
             // toolStripSeparator1
             // 

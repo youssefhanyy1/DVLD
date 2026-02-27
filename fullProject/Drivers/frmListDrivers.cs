@@ -136,5 +136,19 @@ namespace fullProject.Drivers
             Form frm = new frmShowPersonLicenseHistory(personID);
             frm.ShowDialog();
         }
+
+        private void showDetailsToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            int PersonID = (int)dgvDrivers.CurrentRow.Cells[1].Value;
+            frmShowPersonInfo frm = new frmShowPersonInfo(PersonID);
+            frm.ShowDialog();
+            frmListDrivers_Load(null, null);
+        }
+
+        private void issueInternationalLicenseToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            MessageBox.Show("Not implemented yet.");
+
+        }
     }
 }
