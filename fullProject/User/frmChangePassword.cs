@@ -48,25 +48,24 @@ namespace fullProject.User
 
         private void txtCurrentPassword_Validating(object sender, CancelEventArgs e)
         {
-            if (string.IsNullOrEmpty(txtConfirmPassword.Text))
+            if (string.IsNullOrEmpty(txtCurrentPassword.Text.Trim()))
             {
                 e.Cancel = true;
-                errorProvider1.SetError(txtCurrentPassword, "Please enter current password.");
-                return;
+                errorProvider1.SetError(txtCurrentPassword, "Current Password cannot be blank");
+                return; 
             }
             else
             {
                 errorProvider1.SetError(txtCurrentPassword, null);
             }
-            if (_User.Password==txtCurrentPassword.Text.Trim())
+
+            if (txtCurrentPassword.Text.Trim() != _User.Password)
             {
                 e.Cancel = true;
-                errorProvider1.SetError(txtCurrentPassword, "Current password is incorrect.");
-                return;
+                errorProvider1.SetError(txtCurrentPassword, "Current Password is wrong!");
             }
             else
             {
-                e.Cancel = false;
                 errorProvider1.SetError(txtCurrentPassword, null);
             }
         }
