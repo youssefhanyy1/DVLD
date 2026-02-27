@@ -450,7 +450,7 @@
             this.Controls.Add(this.llShowLicenseInfo);
             this.Name = "frmReleaseDetainedLicenseApplication";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "frmReleaseDetainedLicenseApplication";
+            this.Text = "Release Detained License Application";
             this.Load += new System.EventHandler(this.frmReleaseDetainedLicenseApplication_Load);
             this.gpDetain.ResumeLayout(false);
             this.gpDetain.PerformLayout();

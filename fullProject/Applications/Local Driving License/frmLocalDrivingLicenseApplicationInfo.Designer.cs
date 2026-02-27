@@ -65,7 +65,7 @@
             this.Controls.Add(this.ctrlDrivingLicenseApplicationInfo1);
             this.Name = "frmLocalDrivingLicenseApplicationInfo";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "frmLocalDrivingLicenseApplicationInfo";
+            this.Text = "Local Driving License ApplicationInfo";
             this.Load += new System.EventHandler(this.frmLocalDrivingLicenseApplicationInfo_Load);
             this.ResumeLayout(false);
 

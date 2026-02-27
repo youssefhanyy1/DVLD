@@ -238,7 +238,7 @@
             this.Controls.Add(this.pictureBox3);
             this.Name = "frmEditTestType";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "frmEditTestType";
+            this.Text = "Edit Test Type";
             this.Load += new System.EventHandler(this.frmEditTestType_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();

@@ -77,7 +77,7 @@
             this.Controls.Add(this.lblTitle);
             this.Name = "frmShowPersonInfo";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "frmShowPersonInfo";
+            this.Text = "Show Person Info";
             this.Load += new System.EventHandler(this.frmShowPersonInfo_Load);
             this.ResumeLayout(false);
 

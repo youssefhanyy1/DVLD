@@ -49,6 +49,7 @@
             this.ctrlSecheduledTest1.Name = "ctrlSecheduledTest1";
             this.ctrlSecheduledTest1.Size = new System.Drawing.Size(583, 581);
             this.ctrlSecheduledTest1.TabIndex = 0;
+            this.ctrlSecheduledTest1.TestTypeID = DVLD_Business.clsTestType.enTestType.All;
             // 
             // lblUserMessage
             // 
@@ -190,7 +191,7 @@
             this.Controls.Add(this.ctrlSecheduledTest1);
             this.Name = "frmTakeTest";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "frmTakeTest";
+            this.Text = "Take Test";
             this.Load += new System.EventHandler(this.frmTakeTest_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();

@@ -183,7 +183,7 @@
             this.toolStripMenuItem5,
             this.showPersonLicenseHistoryToolStripMenuItem});
             this.cmsApplications.Name = "cmsApplications";
-            this.cmsApplications.Size = new System.Drawing.Size(309, 366);
+            this.cmsApplications.Size = new System.Drawing.Size(309, 338);
             this.cmsApplications.Opening += new System.ComponentModel.CancelEventHandler(this.cmsApplications_Opening);
             // 
             // showAToolStripMenuItem
@@ -377,7 +377,7 @@
             this.Controls.Add(this.pbPersonImage);
             this.Name = "frmListLocalDrivingLicesnseApplications";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "frmListLocalDrivingLicesnseApplications";
+            this.Text = "List Local Driving Licesnse Applications";
             this.Load += new System.EventHandler(this.frmListLocalDrivingLicesnseApplications_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pbPersonImage)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

@@ -334,7 +334,7 @@
             this.Controls.Add(this.ctrlDriverLicenseInfoWithFilter1);
             this.Name = "frmDetainLicenseApplication";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "frmDetainLicenseApplication";
+            this.Text = "DetainL icense Application";
             this.Load += new System.EventHandler(this.frmDetainLicenseApplication_Load);
             this.gpDetain.ResumeLayout(false);
             this.gpDetain.PerformLayout();

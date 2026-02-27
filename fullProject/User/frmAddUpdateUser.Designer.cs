@@ -90,7 +90,7 @@
             this.tabPage1.Font = new System.Drawing.Font("Microsoft Sans Serif", 4F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tabPage1.Location = new System.Drawing.Point(4, 31);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage1.Size = new System.Drawing.Size(863, 457);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Person Info";
@@ -116,7 +116,7 @@
             this.ctrPersonCardWithFilter1.FilterEnapled = true;
             this.ctrPersonCardWithFilter1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ctrPersonCardWithFilter1.Location = new System.Drawing.Point(7, 7);
-            this.ctrPersonCardWithFilter1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.ctrPersonCardWithFilter1.Margin = new System.Windows.Forms.Padding(4);
             this.ctrPersonCardWithFilter1.Name = "ctrPersonCardWithFilter1";
             this.ctrPersonCardWithFilter1.ShowAddPerson = true;
             this.ctrPersonCardWithFilter1.Size = new System.Drawing.Size(842, 394);
@@ -139,7 +139,7 @@
             this.tpLoginInfo.Controls.Add(this.pictureBox3);
             this.tpLoginInfo.Location = new System.Drawing.Point(4, 31);
             this.tpLoginInfo.Name = "tpLoginInfo";
-            this.tpLoginInfo.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tpLoginInfo.Padding = new System.Windows.Forms.Padding(3);
             this.tpLoginInfo.Size = new System.Drawing.Size(863, 457);
             this.tpLoginInfo.TabIndex = 1;
             this.tpLoginInfo.Text = "Login Info";
@@ -331,7 +331,7 @@
             this.Controls.Add(this.lblTitle);
             this.Name = "frmAddUpdateUser";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "frmAddUpdateUser";
+            this.Text = "Add/Update User";
             this.Activated += new System.EventHandler(this.frmAddUpdateUser_Activated);
             this.Load += new System.EventHandler(this.frmAddUpdateUser_Load);
             this.tcUserInfo.ResumeLayout(false);

@@ -105,7 +105,7 @@
             this.Controls.Add(this.ctrlPersonCardWithFilter1);
             this.Name = "frmShowPersonLicenseHistory";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "frmShowPersonLicenseHistory";
+            this.Text = "Show Person License History";
             this.Load += new System.EventHandler(this.frmShowPersonLicenseHistory_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pbPersonImage)).EndInit();
             this.ResumeLayout(false);

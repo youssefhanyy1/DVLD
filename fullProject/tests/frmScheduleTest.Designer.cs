@@ -65,7 +65,7 @@
             this.Controls.Add(this.ctrlScheduleTest1);
             this.Name = "frmScheduleTest";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "frmScheduleTest";
+            this.Text = "Schedule Test";
             this.Load += new System.EventHandler(this.frmScheduleTest_Load);
             this.ResumeLayout(false);
 

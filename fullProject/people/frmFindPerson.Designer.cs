@@ -80,7 +80,7 @@
             this.Controls.Add(this.lblTitle);
             this.Name = "frmFindPerson";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "frmFindPerson";
+            this.Text = "Find Person";
             this.Load += new System.EventHandler(this.frmFindPerson_Load);
             this.ResumeLayout(false);
 

@@ -161,7 +161,7 @@
             this.Controls.Add(this.pbApplicationTypesmage);
             this.Name = "frmListTestTypes";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "frmListTestTypes";
+            this.Text = "List Test Types";
             this.Load += new System.EventHandler(this.frmListTestTypes_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvTestTypes)).EndInit();
             this.cmsTestTypes.ResumeLayout(false);

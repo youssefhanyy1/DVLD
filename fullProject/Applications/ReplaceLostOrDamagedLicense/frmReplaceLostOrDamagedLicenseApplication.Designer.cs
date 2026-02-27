@@ -408,7 +408,7 @@
             this.Controls.Add(this.lblTitle);
             this.Name = "frmReplaceLostOrDamagedLicenseApplication";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "frmReplaceLostOrDamagedLicenseApplication";
+            this.Text = "Replace Lost Or Damaged License Application";
             this.Activated += new System.EventHandler(this.frmReplaceLostOrDamagedLicenseApplication_Activated);
             this.Load += new System.EventHandler(this.frmReplaceLostOrDamagedLicenseApplication_Load);
             this.gpApplicationInfo.ResumeLayout(false);

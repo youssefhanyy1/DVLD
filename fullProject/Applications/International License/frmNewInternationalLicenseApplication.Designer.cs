@@ -451,7 +451,7 @@
             this.Controls.Add(this.ctrlDriverLicenseInfoWithFilter1);
             this.Name = "frmNewInternationalLicenseApplication";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "frmNewInternationalLicenseApplication";
+            this.Text = "New International License Application";
             this.Activated += new System.EventHandler(this.frmNewInternationalLicenseApplication_Activated);
             this.Load += new System.EventHandler(this.frmNewInternationalLicenseApplication_Load);
             this.gpApplicationInfo.ResumeLayout(false);

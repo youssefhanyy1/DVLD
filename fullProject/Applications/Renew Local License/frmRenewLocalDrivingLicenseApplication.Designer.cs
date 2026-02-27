@@ -576,7 +576,7 @@
             this.Controls.Add(this.lblTitle);
             this.Name = "frmRenewLocalDrivingLicenseApplication";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "frmRenewLocalDrivingLicenseApplication";
+            this.Text = "Renew Local Driving License Application";
             this.Activated += new System.EventHandler(this.frmRenewLocalDrivingLicenseApplication_Activated);
             this.Load += new System.EventHandler(this.frmRenewLocalDrivingLicenseApplication_Load);
             this.gpApplicationInfo.ResumeLayout(false);

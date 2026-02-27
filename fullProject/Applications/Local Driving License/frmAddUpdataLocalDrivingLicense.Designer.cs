@@ -346,7 +346,7 @@
             this.Controls.Add(this.tcApplicationInfo);
             this.Name = "frmAddUpdataLocalDrivingLicense";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "frmAddUpdataLocalDrivingLicense";
+            this.Text = "Add Updata Local Driving License";
             this.Load += new System.EventHandler(this.frmAddUpdataLocalDrivingLicense_Load);
             this.tcApplicationInfo.ResumeLayout(false);
             this.tpPersonalInfo.ResumeLayout(false);

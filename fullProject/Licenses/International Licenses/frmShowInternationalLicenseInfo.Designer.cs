@@ -94,7 +94,7 @@
             this.Controls.Add(this.ctrlDriverInternationalLicenseInfo1);
             this.Name = "frmShowInternationalLicenseInfo";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "frmShowInternationalLicenseInfo";
+            this.Text = "Show International LicenseInfo";
             this.Load += new System.EventHandler(this.frmShowInternationalLicenseInfo_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pbTestTypeImage)).EndInit();
             this.ResumeLayout(false);
