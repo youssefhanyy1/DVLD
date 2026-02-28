@@ -147,7 +147,7 @@ namespace fullProject.Drivers
 
         private void issueInternationalLicenseToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
-            MessageBox.Show("Not implemented yet.");
+            MessageBox.Show("not find the id");
 
         }
     }
