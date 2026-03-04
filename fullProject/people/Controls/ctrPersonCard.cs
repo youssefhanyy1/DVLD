@@ -81,7 +81,7 @@ namespace fullProject.people.Controls
                 }
                 else
                 {
-                    //MessageBox.Show($"Could not find this Image: = {ImagePath}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show($"Could not find this Image: = {ImagePath}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
