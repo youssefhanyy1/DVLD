@@ -33,83 +33,87 @@ namespace DVLD_DataAccess
 
         }
 
-        public static bool GetPersonInfoByID(int PersonID, ref stpersondata personData)
+        public static bool GetPersonInfoByID(int PersonID,ref stpersondata personData)
         {
             bool isFound = false;
+
+            SqlConnection connection = new SqlConnection(ClsDataAccsess.connations);
+
+            string query = "SELECT * FROM People WHERE PersonID = @PersonID";
+
+            SqlCommand command = new SqlCommand(query, connection);
+
+            command.Parameters.AddWithValue("@PersonID", PersonID);
+
             try
             {
-                using (SqlConnection connection = new SqlConnection(ClsDataAccsess.connations))
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+
+                if (reader.Read())
                 {
-                    string query = "SELECT * FROM People WHERE PersonID = @PersonID";
-                    using (SqlCommand command = new SqlCommand(query, connection))
+                    isFound = true;
+
+                    personData.Firstname = (string)reader["FirstName"];
+                    personData.SecondName = (string)reader["SecondName"];
+
+                    if (reader["ThirdName"] != DBNull.Value)
                     {
-                        command.Parameters.AddWithValue("@PersonID", PersonID);
-
-                        connection.Open();
-
-                        using (SqlDataReader reader = command.ExecuteReader())
-                        {
-                            if (reader.Read())
-                            {
-                                isFound = true;
-
-                                personData.Firstname = (string)reader["FirstName"];
-                                personData.SecondName = (string)reader["SecondName"];
-
-                                if (reader["ThirdName"] != DBNull.Value)
-                                {
-                                    personData.ThirdName = (string)reader["ThirdName"];
-                                }
-                                else
-                                {
-                                    personData.ThirdName = "";
-                                }
-
-                                personData.Lastname = (string)reader["LastName"];
-                                personData.NationalNo = (string)reader["NationalNo"];
-                                personData.DataOfBirth = (DateTime)reader["DateOfBirth"];
-                                personData.Gender = (byte)reader["Gendor"];
-                                personData.Address = (string)reader["Address"];
-                                personData.Phone = (string)reader["Phone"];
-
-
-                                if (reader["Email"] != DBNull.Value)
-                                {
-                                    personData.Email = (string)reader["Email"];
-                                }
-                                else
-                                {
-                                    personData.Email = "";
-                                }
-
-                                personData.NationalityCountryID = (int)reader["NationalityCountryID"];
-
-                                if (reader["ImagePath"] != DBNull.Value)
-                                {
-                                    personData.ImagePath = (string)reader["ImagePath"];
-                                }
-                                else
-                                {
-                                    personData.ImagePath = "";
-                                }
-                            }
-                            else
-                            {
-                                isFound = false;
-                            }
-                        }
+                        personData.ThirdName = (string)reader["ThirdName"];
                     }
+                    else
+                    {
+                        personData.ThirdName = "";
+                    }
+
+                    personData.Lastname = (string)reader["LastName"];
+                    personData.NationalNo = (string)reader["NationalNo"];
+                    personData.DataOfBirth = (DateTime)reader["DateOfBirth"];
+                    personData.Gender = (byte)reader["Gendor"];
+                    personData.Address = (string)reader["Address"];
+                    personData.Phone = (string)reader["Phone"];
+
+
+                    if (reader["Email"] != DBNull.Value)
+                    {
+                        personData.Email = (string)reader["Email"];
+                    }
+                    else
+                    {
+                        personData.Email = "";
+                    }
+
+                    personData.NationalityCountryID = (int)reader["NationalityCountryID"];
+
+                    if (reader["ImagePath"] != DBNull.Value)
+                    {
+                        personData.ImagePath = (string)reader["ImagePath"];
+                    }
+                    else
+                    {
+                       personData.ImagePath = "";
+                    }
+
                 }
+                else
+                {
+                    isFound = false;
+                }
+
+                reader.Close();
             }
-            catch
+            catch (Exception ex)
             {
+
                 isFound = false;
+            }
+            finally
+            {
+                connection.Close();
             }
 
             return isFound;
         }
-
-
 
         public static bool GetPersonInfoByNationalNo(string NationalNo, ref stpersondata persondata)
         {
