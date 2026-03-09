@@ -5,71 +5,74 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Utils; // تم الإضافة عشان الـ Logging
 
 namespace DVLD_DataAccess
 {
     public class clsCountryData
     {
-        public enum enGender {Male=0,Female=1};
+        public enum enGender { Male = 0, Female = 1 };
 
         public static bool GetCountryInfoByID(int CountryID, ref string CountryName)
         {
-          bool IsFound= false;
-            SqlConnection connection = new SqlConnection(ClsDataAccsess.connations);
-            string query = "select * from Countries\r\nwhere CountryID=@CountryID;";
-            SqlCommand cmd = new SqlCommand(query,connection);
-            cmd.Parameters.AddWithValue("@CountryID", CountryID);
+            bool IsFound = false;
             try
             {
-                connection.Open();
-                SqlDataReader reader = cmd.ExecuteReader();
+                using (SqlConnection connection = new SqlConnection(ClsDataAccsess.connations))
+                {
+                    string query = "select * from Countries where CountryID=@CountryID;";
+                    using (SqlCommand cmd = new SqlCommand(query, connection))
+                    {
+                        cmd.Parameters.AddWithValue("@CountryID", CountryID);
+                        connection.Open();
 
-                if (reader.Read()) { 
-                IsFound = true;
-                    CountryName = (reader["CountryName"]).ToString();
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                IsFound = true;
+                                CountryName = reader["CountryName"].ToString();
+                            }
+                        }
+                    }
                 }
-                reader.Close();
-
             }
-            catch (Exception) {
-                IsFound = false;
-            }
-            finally
+            catch (Exception ex)
             {
-                connection.Close();
-                
+                Log.LogException(ex, "GetCountryInfoByID", "Data access");
+                IsFound = false;
             }
             return IsFound;
         }
 
-        public static bool GetCountryInfoByName(string CountryName,ref int CounreyID)
+        public static bool GetCountryInfoByName(string CountryName, ref int CounreyID)
         {
             bool IsFound = false;
-            SqlConnection connection = new SqlConnection(ClsDataAccsess.connations);
-            string query = "select * from Countries\r\nwhere CountryName=@CountryName;";
-            SqlCommand cmd = new SqlCommand(query, connection);
-            cmd.Parameters.AddWithValue("@CountryName", CountryName);
             try
             {
-                connection.Open();
-                SqlDataReader reader = cmd.ExecuteReader();
-
-                if (reader.Read())
+                using (SqlConnection connection = new SqlConnection(ClsDataAccsess.connations))
                 {
-                    IsFound = true;
-                    CounreyID = (int)reader["CountryID"];
+                    string query = "select * from Countries where CountryName=@CountryName;";
+                    using (SqlCommand cmd = new SqlCommand(query, connection))
+                    {
+                        cmd.Parameters.AddWithValue("@CountryName", CountryName);
+                        connection.Open();
+
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                IsFound = true;
+                                CounreyID = (int)reader["CountryID"];
+                            }
+                        }
+                    }
                 }
-                reader.Close();
-
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                Log.LogException(ex, "GetCountryInfoByName", "Data access");
                 IsFound = false;
-            }
-            finally
-            {
-                connection.Close();
-
             }
             return IsFound;
         }
@@ -77,25 +80,27 @@ namespace DVLD_DataAccess
         public static DataTable GetAllCountries()
         {
             DataTable Dt = new DataTable();
-            SqlConnection connection = new SqlConnection(ClsDataAccsess.connations);
-            string query = "SELECT * FROM Countries order by CountryName";
-            SqlCommand Command = new SqlCommand(query, connection);
             try
             {
-                connection.Open();
-                SqlDataReader reader = Command.ExecuteReader();
-                if (reader.HasRows)
+                using (SqlConnection connection = new SqlConnection(ClsDataAccsess.connations))
                 {
-                    Dt.Load(reader);
+                    string query = "SELECT * FROM Countries order by CountryName";
+                    using (SqlCommand Command = new SqlCommand(query, connection))
+                    {
+                        connection.Open();
+                        using (SqlDataReader reader = Command.ExecuteReader())
+                        {
+                            if (reader.HasRows)
+                            {
+                                Dt.Load(reader);
+                            }
+                        }
+                    }
                 }
-                reader.Close();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-            }
-            finally { 
-            connection.Close();
+                Log.LogException(ex, "GetAllCountries", "Data access");
             }
             return Dt;
         }

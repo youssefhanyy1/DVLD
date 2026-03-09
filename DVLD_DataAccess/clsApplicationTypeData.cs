@@ -5,6 +5,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Utils; 
 
 namespace DVLD_DataAccess
 {
@@ -13,37 +14,32 @@ namespace DVLD_DataAccess
         public static bool GetApplicationTypeInfoByID(int ApplicationTypeID, ref string ApplicationTypeTitle, ref float ApplicationFees)
         {
             bool IsFound = false;
-            SqlConnection connection = new SqlConnection(ClsDataAccsess.connations); 
-
-            string query = "SELECT * FROM ApplicationTypes WHERE ApplicationTypeID = @ApplicationTypeID";
-
-            SqlCommand command = new SqlCommand(query, connection);
-            command.Parameters.AddWithValue("@ApplicationTypeID", ApplicationTypeID);
-
             try
             {
-                connection.Open();
-                SqlDataReader reader = command.ExecuteReader();
+                using (SqlConnection connection = new SqlConnection(ClsDataAccsess.connations))
+                {
+                    string query = "SELECT * FROM ApplicationTypes WHERE ApplicationTypeID = @ApplicationTypeID";
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@ApplicationTypeID", ApplicationTypeID);
+                        connection.Open();
 
-                if (reader.Read())
-                {
-                    IsFound = true;
-                    ApplicationTypeTitle = (string)reader["ApplicationTypeTitle"];
-                    ApplicationFees = Convert.ToSingle(reader["ApplicationFees"]);
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                IsFound = true;
+                                ApplicationTypeTitle = (string)reader["ApplicationTypeTitle"];
+                                ApplicationFees = Convert.ToSingle(reader["ApplicationFees"]);
+                            }
+                        }
+                    }
                 }
-                else
-                {
-                    IsFound = false;
-                }
-                reader.Close();
             }
             catch (Exception ex)
             {
+                Log.LogException(ex, "GetApplicationTypeInfoByID", "Data access");
                 IsFound = false;
-            }
-            finally
-            {
-                connection.Close();
             }
             return IsFound;
         }
@@ -51,29 +47,27 @@ namespace DVLD_DataAccess
         public static DataTable GetAllApplicationTypes()
         {
             DataTable dt = new DataTable();
-            SqlConnection connection = new SqlConnection(ClsDataAccsess.connations);
-
-            string query = "SELECT * FROM ApplicationTypes ORDER BY ApplicationTypeTitle";
-
-            SqlCommand command = new SqlCommand(query, connection);
-
             try
             {
-                connection.Open();
-                SqlDataReader reader = command.ExecuteReader();
-
-                if (reader.HasRows)
+                using (SqlConnection connection = new SqlConnection(ClsDataAccsess.connations))
                 {
-                    dt.Load(reader);
+                    string query = "SELECT * FROM ApplicationTypes ORDER BY ApplicationTypeTitle";
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        connection.Open();
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            if (reader.HasRows)
+                            {
+                                dt.Load(reader);
+                            }
+                        }
+                    }
                 }
-                reader.Close();
             }
             catch (Exception ex)
             {
-            }
-            finally
-            {
-                connection.Close();
+                Log.LogException(ex, "GetAllApplicationTypes", "Data access");
             }
             return dt;
         }
@@ -81,33 +75,32 @@ namespace DVLD_DataAccess
         public static int AddNewApplicationType(string Title, float Fees)
         {
             int ApplicationTypeID = -1;
-            SqlConnection connection = new SqlConnection(ClsDataAccsess.connations);
-
-            string query = @"INSERT INTO ApplicationTypes (ApplicationTypeTitle, ApplicationFees)
-                             VALUES (@Title, @Fees);
-                             SELECT SCOPE_IDENTITY();";
-
-            SqlCommand command = new SqlCommand(query, connection);
-
-            command.Parameters.AddWithValue("@Title", Title);
-            command.Parameters.AddWithValue("@Fees", Fees);
-
             try
             {
-                connection.Open();
-                object result = command.ExecuteScalar();
-
-                if (result != null && int.TryParse(result.ToString(), out int insertedID))
+                using (SqlConnection connection = new SqlConnection(ClsDataAccsess.connations))
                 {
-                    ApplicationTypeID = insertedID;
+                    string query = @"INSERT INTO ApplicationTypes (ApplicationTypeTitle, ApplicationFees)
+                                     VALUES (@Title, @Fees);
+                                     SELECT SCOPE_IDENTITY();";
+
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@Title", Title);
+                        command.Parameters.AddWithValue("@Fees", Fees);
+
+                        connection.Open();
+                        object result = command.ExecuteScalar();
+
+                        if (result != null && int.TryParse(result.ToString(), out int insertedID))
+                        {
+                            ApplicationTypeID = insertedID;
+                        }
+                    }
                 }
             }
             catch (Exception ex)
             {
-            }
-            finally
-            {
-                connection.Close();
+                Log.LogException(ex, "AddNewApplicationType", "Data access");
             }
             return ApplicationTypeID;
         }
@@ -115,33 +108,31 @@ namespace DVLD_DataAccess
         public static bool UpdateApplicationType(int ApplicationTypeID, string Title, float Fees)
         {
             int rowsAffected = 0;
-            SqlConnection connection = new SqlConnection(ClsDataAccsess.connations);
-
-            string query = @"UPDATE ApplicationTypes  
-                             SET ApplicationTypeTitle = @Title,
-                                 ApplicationFees = @Fees
-                             WHERE ApplicationTypeID = @ApplicationTypeID";
-
-            SqlCommand command = new SqlCommand(query, connection);
-
-            command.Parameters.AddWithValue("@ApplicationTypeID", ApplicationTypeID);
-            command.Parameters.AddWithValue("@Title", Title);
-            command.Parameters.AddWithValue("@Fees", Fees);
-
             try
             {
-                connection.Open();
-                rowsAffected = command.ExecuteNonQuery();
+                using (SqlConnection connection = new SqlConnection(ClsDataAccsess.connations))
+                {
+                    string query = @"UPDATE ApplicationTypes  
+                                     SET ApplicationTypeTitle = @Title,
+                                         ApplicationFees = @Fees
+                                     WHERE ApplicationTypeID = @ApplicationTypeID";
+
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@ApplicationTypeID", ApplicationTypeID);
+                        command.Parameters.AddWithValue("@Title", Title);
+                        command.Parameters.AddWithValue("@Fees", Fees);
+
+                        connection.Open();
+                        rowsAffected = command.ExecuteNonQuery();
+                    }
+                }
             }
             catch (Exception ex)
             {
+                Log.LogException(ex, "UpdateApplicationType", "Data access");
                 return false;
             }
-            finally
-            {
-                connection.Close();
-            }
-
             return (rowsAffected > 0);
         }
     }
