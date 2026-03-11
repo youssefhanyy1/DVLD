@@ -1,4 +1,5 @@
-﻿using DVLD_Business;
+﻿using DVLD.Classes;
+using DVLD_Business;
 using fullProject.people.Controls;
 using System;
 using System.Collections.Generic;
@@ -6,6 +7,8 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Security.Cryptography;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -193,7 +196,7 @@ namespace fullProject.User
             }
             _User.PersonID = ctrPersonCardWithFilter1.PersonID;
             _User.UserName = txtUserName.Text.Trim();
-            _User.Password = txtPassword.Text.Trim();
+            _User.Password = clsUtil.ComputeHash(txtPassword.Text.Trim());
             _User.IsActive = chkIsActive.Checked;
 
             if (_User.Save())
@@ -209,6 +212,13 @@ namespace fullProject.User
                 MessageBox.Show("Error: Data Is not Saved Successfully.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
             }
+
+        }
+
+
+        private void txtPassword_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

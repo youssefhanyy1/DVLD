@@ -1,6 +1,8 @@
 ﻿using DVLD_DataAccess;
 using System;
 using System.Data;
+using System.Security.Cryptography;
+using System.Text;
 
 namespace DVLD_Business 
 {
@@ -167,6 +169,7 @@ namespace DVLD_Business
         {
             return ClsUserData.IsUserExistForPersonID(PersonID);
         }
+   
 
     }
 }
