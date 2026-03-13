@@ -37,35 +37,28 @@ namespace fullProject.Login
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            clsUser User = clsUser.FindByUsernameAndPassword(txtUserName.Text.Trim(), txtPassword.Text.Trim());
+            string username = txtUserName.Text.Trim();
 
-            if (User != null)
+            string hashedPassword = clsUtil.ComputeHash(txtPassword.Text.Trim());
+
+            clsUser user = clsUser.FindByUsernameAndPassword(username, hashedPassword);
+
+            if (user != null)
             {
-                if (!User.IsActive)
+                if (!user.IsActive)
                 {
-                    txtUserName.Focus();
-                    MessageBox.Show("User is InActive. Please contact system administrator.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Your account is InActive, Contact Admin.", "In Active Account", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
 
-                if (chkRememberMe.Checked)
-                {
-                    clsStoreInRegistry.RememberUsernameAndPassword(txtUserName.Text.Trim(), txtPassword.Text.Trim());
-                }
-                else
-                {
-                    clsStoreInRegistry.RememberUsernameAndPassword("", "");
-                }
-
-                clsGlobal.CurrentUser = User;
+                clsGlobal.CurrentUser = user;
                 this.Hide();
                 frmMain frm = new frmMain(this);
-                frm.ShowDialog();
+                frm.Show();
             }
             else
             {
-                txtUserName.Focus();
-                MessageBox.Show("Invalid UserName or Password", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Invalid Username/Password.", "Wrong Credentials", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
